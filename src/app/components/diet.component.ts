@@ -1,5 +1,7 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { CommonModule } from '@angular/common';
+import { DietService } from '../services/diet.service';
+import { DayMealPlan } from '../models/diet.model';
 
 @Component({
   selector: 'app-diet',
@@ -12,7 +14,7 @@ import { CommonModule } from '@angular/common';
       
       <div class="day-selector">
         <button *ngFor="let day of days" 
-                (click)="selectedDay = day" 
+                (click)="selectDay(day)" 
                 [class.active]="selectedDay === day"
                 class="day-btn">
           {{ day }}
@@ -22,70 +24,71 @@ import { CommonModule } from '@angular/common';
       <div class="meal-plan" *ngIf="selectedDay">
         <h2>{{ selectedDay }} Meal Plan</h2>
         
-        <div class="meals">
+        <div class="meals" *ngIf="currentMealPlan">
           <div class="meal-card">
             <h3>🌅 Breakfast (7:00 AM)</h3>
-            <p><strong>Overnight Oats with Banana</strong></p>
+            <p><strong>{{ currentMealPlan.breakfast.name }}</strong></p>
             <div class="meal-details">
-              <span>Calories: 350</span>
-              <span>Protein: 12g</span>
-              <span>Prep: 5min</span>
-              <span>Cost: $2.50</span>
+              <span>Calories: {{ currentMealPlan.breakfast.calories }}</span>
+              <span>Protein: {{ currentMealPlan.breakfast.protein }}g</span>
+              <span>Prep: {{ currentMealPlan.breakfast.prepTime }}min</span>
+              <span>Cost: KES {{ currentMealPlan.breakfast.cost }}</span>
             </div>
           </div>
 
           <div class="meal-card">
             <h3>🥪 Lunch (12:30 PM)</h3>
-            <p><strong>Chicken & Rice Bowl</strong></p>
+            <p><strong>{{ currentMealPlan.lunch.name }}</strong></p>
             <div class="meal-details">
-              <span>Calories: 450</span>
-              <span>Protein: 35g</span>
-              <span>Prep: 15min</span>
-              <span>Cost: $4.00</span>
+              <span>Calories: {{ currentMealPlan.lunch.calories }}</span>
+              <span>Protein: {{ currentMealPlan.lunch.protein }}g</span>
+              <span>Prep: {{ currentMealPlan.lunch.prepTime }}min</span>
+              <span>Cost: KES {{ currentMealPlan.lunch.cost }}</span>
             </div>
           </div>
 
           <div class="meal-card">
             <h3>🍽️ Dinner (7:00 PM)</h3>
-            <p><strong>Salmon with Sweet Potato</strong></p>
+            <p><strong>{{ currentMealPlan.dinner.name }}</strong></p>
             <div class="meal-details">
-              <span>Calories: 500</span>
-              <span>Protein: 30g</span>
-              <span>Prep: 25min</span>
-              <span>Cost: $6.50</span>
+              <span>Calories: {{ currentMealPlan.dinner.calories }}</span>
+              <span>Protein: {{ currentMealPlan.dinner.protein }}g</span>
+              <span>Prep: {{ currentMealPlan.dinner.prepTime }}min</span>
+              <span>Cost: KES {{ currentMealPlan.dinner.cost }}</span>
             </div>
           </div>
 
           <div class="meal-card">
             <h3>🥜 Snacks</h3>
-            <p><strong>Greek Yogurt & Almonds</strong></p>
+            <p><strong>{{ currentMealPlan.snacks[0]?.name }}</strong></p>
             <div class="meal-details">
-              <span>Calories: 200</span>
-              <span>Protein: 15g</span>
-              <span>Prep: 1min</span>
-              <span>Cost: $2.00</span>
+              <span>Calories: {{ currentMealPlan.snacks[0]?.calories }}</span>
+              <span>Protein: {{ currentMealPlan.snacks[0]?.protein }}g</span>
+              <span>Prep: {{ currentMealPlan.snacks[0]?.prepTime }}min</span>
+              <span>Cost: KES {{ currentMealPlan.snacks[0]?.cost }}</span>
             </div>
           </div>
         </div>
 
-        <div class="daily-summary">
+        <div class="daily-summary" *ngIf="currentMealPlan">
           <h3>Daily Totals</h3>
           <div class="summary-grid">
-            <div>Total Calories: 1,500</div>
-            <div>Total Protein: 92g</div>
-            <div>Total Cost: $15.00</div>
-            <div>Prep Time: 46min</div>
+            <div>Total Calories: {{ currentMealPlan.totalCalories }}</div>
+            <div>Total Protein: {{ currentMealPlan.breakfast.protein + currentMealPlan.lunch.protein + currentMealPlan.dinner.protein + (currentMealPlan.snacks[0]?.protein || 0) }}g</div>
+            <div>Total Cost: KES {{ currentMealPlan.totalCost }}</div>
+            <div>Prep Time: {{ currentMealPlan.breakfast.prepTime + currentMealPlan.lunch.prepTime + currentMealPlan.dinner.prepTime + (currentMealPlan.snacks[0]?.prepTime || 0) }}min</div>
           </div>
         </div>
       </div>
 
       <div class="tips">
-        <h3>💡 Tips for 9-5 Workers</h3>
+        <h3>💡 Tips for 9-5 Workers in Kenya</h3>
         <ul>
-          <li>Meal prep on Sunday for the entire week</li>
-          <li>Keep healthy snacks at your desk</li>
-          <li>Use a slow cooker for easy dinner preparation</li>
-          <li>Stay hydrated - aim for 8 glasses of water daily</li>
+          <li>Buy ingredients in bulk from local markets to save costs</li>
+          <li>Prepare ugali and rice in batches for the week</li>
+          <li>Keep roasted groundnuts and fruits at your desk</li>
+          <li>Use a sufuria for quick one-pot meals</li>
+          <li>Drink plenty of water - carry a reusable bottle</li>
         </ul>
       </div>
     </div>
@@ -107,7 +110,23 @@ import { CommonModule } from '@angular/common';
     .tips li { margin-bottom: 8px; }
   `]
 })
-export class DietComponent {
+export class DietComponent implements OnInit {
   days = ['Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday', 'Sunday'];
   selectedDay = 'Monday';
+  currentMealPlan!: DayMealPlan;
+
+  constructor(private dietService: DietService) {}
+
+  ngOnInit() {
+    this.updateMealPlan();
+  }
+
+  selectDay(day: string) {
+    this.selectedDay = day;
+    this.updateMealPlan();
+  }
+
+  private updateMealPlan() {
+    this.currentMealPlan = this.dietService.getDayMealPlan(this.selectedDay);
+  }
 }
