@@ -29,6 +29,7 @@ import { WeeklyPlan } from '../models/workout.model';
             <h4>{{ weeklyPlan[day].day }}</h4>
             <p>{{ weeklyPlan[day].name }}</p>
             <span>{{ weeklyPlan[day].duration }}min</span>
+            <small>{{ weeklyPlan[day].time }}</small>
           </div>
         </div>
       </div>
@@ -64,7 +65,7 @@ export class DashboardComponent implements OnInit {
   }
 
   getDays(): (keyof WeeklyPlan)[] {
-    return ['monday', 'tuesday', 'wednesday', 'thursday', 'friday', 'saturday'];
+    return ['monday', 'tuesday', 'wednesday', 'thursday', 'friday', 'saturday', 'sunday'];
   }
 
   isCompleted(day: string): boolean {

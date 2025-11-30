@@ -13,6 +13,7 @@ export class WorkoutService {
       duration: 45,
       difficulty: 'Intermediate',
       targetMuscles: ['Chest', 'Shoulders', 'Triceps'],
+      time: '6:00 AM or 7:00 PM',
       exercises: [
         { name: 'Push-ups', sets: 3, reps: '12-15', restTime: 60, muscleGroups: ['Chest', 'Triceps'] },
         { name: 'Overhead Press', sets: 3, reps: '8-10', restTime: 90, muscleGroups: ['Shoulders'] },
@@ -26,6 +27,7 @@ export class WorkoutService {
       duration: 50,
       difficulty: 'Intermediate',
       targetMuscles: ['Quadriceps', 'Hamstrings', 'Glutes'],
+      time: '6:00 AM or 7:00 PM',
       exercises: [
         { name: 'Squats', sets: 4, reps: '12-15', restTime: 90, muscleGroups: ['Quadriceps', 'Glutes'] },
         { name: 'Lunges', sets: 3, reps: '10 each leg', restTime: 60, muscleGroups: ['Quadriceps', 'Glutes'] },
@@ -39,6 +41,7 @@ export class WorkoutService {
       duration: 45,
       difficulty: 'Intermediate',
       targetMuscles: ['Back', 'Biceps'],
+      time: '6:00 AM or 7:00 PM',
       exercises: [
         { name: 'Pull-ups', sets: 3, reps: '6-10', restTime: 90, muscleGroups: ['Back', 'Biceps'] },
         { name: 'Rows', sets: 3, reps: '10-12', restTime: 75, muscleGroups: ['Back'] },
@@ -52,6 +55,7 @@ export class WorkoutService {
       duration: 35,
       difficulty: 'Beginner',
       targetMuscles: ['Core', 'Cardiovascular'],
+      time: '6:00 AM or 7:00 PM',
       exercises: [
         { name: 'Plank', sets: 3, reps: '30-60 sec', restTime: 60, muscleGroups: ['Core'] },
         { name: 'Mountain Climbers', sets: 3, reps: '20', restTime: 45, muscleGroups: ['Core', 'Cardio'] },
@@ -65,6 +69,7 @@ export class WorkoutService {
       duration: 40,
       difficulty: 'Intermediate',
       targetMuscles: ['Full Body'],
+      time: '6:00 AM or 7:00 PM',
       exercises: [
         { name: 'Deadlifts', sets: 3, reps: '8-10', restTime: 120, muscleGroups: ['Back', 'Hamstrings'] },
         { name: 'Push-ups', sets: 2, reps: '10-15', restTime: 60, muscleGroups: ['Chest', 'Triceps'] },
@@ -74,13 +79,29 @@ export class WorkoutService {
     saturday: {
       id: 'sat',
       day: 'Saturday',
-      name: 'Active Recovery',
+      name: 'HIIT Training',
       duration: 30,
-      difficulty: 'Beginner',
-      targetMuscles: ['Flexibility', 'Mobility'],
+      difficulty: 'Intermediate',
+      targetMuscles: ['Full Body', 'Cardio'],
+      time: '8:00 AM or 6:00 PM',
       exercises: [
-        { name: 'Yoga Flow', sets: 1, reps: '15 min', restTime: 0, muscleGroups: ['Full Body'] },
-        { name: 'Light Walking', sets: 1, reps: '15 min', restTime: 0, muscleGroups: ['Cardio'] }
+        { name: 'Jumping Jacks', sets: 4, reps: '30 sec', restTime: 30, muscleGroups: ['Full Body'] },
+        { name: 'High Knees', sets: 4, reps: '30 sec', restTime: 30, muscleGroups: ['Cardio'] },
+        { name: 'Push-up Burpees', sets: 3, reps: '10', restTime: 60, muscleGroups: ['Full Body'] }
+      ]
+    },
+    sunday: {
+      id: 'sun',
+      day: 'Sunday',
+      name: 'Recovery Day',
+      duration: 45,
+      difficulty: 'Beginner',
+      targetMuscles: ['Recovery', 'Flexibility'],
+      time: 'Anytime',
+      exercises: [
+        { name: 'Gentle Stretching', sets: 1, reps: '20 min', restTime: 0, muscleGroups: ['Full Body'] },
+        { name: 'Meditation', sets: 1, reps: '10 min', restTime: 0, muscleGroups: ['Mental Health'] },
+        { name: 'Light Walking', sets: 1, reps: '15 min', restTime: 0, muscleGroups: ['Recovery'] }
       ]
     }
   };

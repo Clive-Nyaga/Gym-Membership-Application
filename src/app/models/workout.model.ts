@@ -14,6 +14,7 @@ export interface WorkoutPlan {
   exercises: Exercise[];
   targetMuscles: string[];
   difficulty: 'Beginner' | 'Intermediate' | 'Advanced';
+  time: string;
 }
 
 export interface WeeklyPlan {
@@ -23,4 +24,5 @@ export interface WeeklyPlan {
   thursday: WorkoutPlan;
   friday: WorkoutPlan;
   saturday: WorkoutPlan;
+  sunday: WorkoutPlan;
 }

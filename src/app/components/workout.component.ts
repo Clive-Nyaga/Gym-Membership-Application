@@ -15,6 +15,7 @@ import { WorkoutPlan, WeeklyPlan } from '../models/workout.model';
         <h2>{{ currentWorkout.name }}</h2>
         <div class="workout-info">
           <span>Duration: {{ currentWorkout.duration }}min</span>
+          <span>Time: {{ currentWorkout.time }}</span>
           <span>Difficulty: {{ currentWorkout.difficulty }}</span>
           <span>Target: {{ currentWorkout.targetMuscles.join(', ') }}</span>
         </div>
@@ -75,14 +76,10 @@ export class WorkoutComponent implements OnInit {
   ngOnInit() {
     const today = new Date().getDay();
     const days: (keyof WeeklyPlan)[] = 
-      ['monday', 'tuesday', 'wednesday', 'thursday', 'friday', 'saturday'];
+      ['sunday', 'monday', 'tuesday', 'wednesday', 'thursday', 'friday', 'saturday'];
     
-    if (today === 0 || today === 7) {
-      this.currentWorkout = this.workoutService.getDayWorkout('monday');
-    } else {
-      const dayKey = days[today - 1];
-      this.currentWorkout = this.workoutService.getDayWorkout(dayKey);
-    }
+    const dayKey = days[today];
+    this.currentWorkout = this.workoutService.getDayWorkout(dayKey);
   }
 
   startWorkout() {
