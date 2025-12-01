@@ -23,7 +23,9 @@ import { WorkoutPlan, WeeklyPlan } from '../models/workout.model';
 
       <div class="exercises" *ngIf="currentWorkout">
         <div *ngFor="let exercise of currentWorkout.exercises; let i = index" 
-             class="exercise-card" [class.active]="currentExercise === i">
+             class="exercise-card" 
+             [class.active]="workoutStarted && currentExercise === i"
+             [class.completed]="workoutStarted && currentExercise > i">
           <h3>{{ exercise.name }}</h3>
           <div class="exercise-details">
             <p><strong>Sets:</strong> {{ exercise.sets }}</p>
@@ -31,17 +33,23 @@ import { WorkoutPlan, WeeklyPlan } from '../models/workout.model';
             <p><strong>Rest:</strong> {{ exercise.restTime }}s</p>
             <p><strong>Muscles:</strong> {{ exercise.muscleGroups.join(', ') }}</p>
           </div>
-          <button *ngIf="currentExercise === i" (click)="completeExercise()" class="complete-btn">
+          <button *ngIf="workoutStarted && currentExercise === i" (click)="completeExercise()" class="complete-btn">
             Complete Exercise
           </button>
+          <span *ngIf="workoutStarted && currentExercise > i" class="completed-badge">✓ Completed</span>
         </div>
       </div>
 
       <div class="workout-controls">
         <button (click)="startWorkout()" *ngIf="!workoutStarted" class="start-btn">Start Workout</button>
-        <button (click)="finishWorkout()" *ngIf="workoutStarted && currentWorkout && currentExercise >= currentWorkout.exercises.length" class="finish-btn">
-          Finish Workout
-        </button>
+        <div *ngIf="workoutStarted && currentWorkout && currentExercise >= currentWorkout.exercises.length" class="completion-section">
+          <button (click)="finishWorkout()" class="finish-btn">Finish Workout</button>
+          <button *ngIf="nextWorkout" (click)="goToNextWorkout()" class="next-btn">Next: {{ nextWorkout.name }}</button>
+        </div>
+      </div>
+
+      <div *ngIf="!currentWorkout" class="loading">
+        <p>Loading today's workout...</p>
       </div>
 
       <div class="timer" *ngIf="restTimer > 0">
@@ -55,14 +63,19 @@ import { WorkoutPlan, WeeklyPlan } from '../models/workout.model';
     .workout-info { display: flex; gap: 20px; margin-top: 10px; flex-wrap: wrap; }
     .workout-info span { background: white; padding: 5px 10px; border-radius: 4px; font-size: 14px; }
     .exercises { display: flex; flex-direction: column; gap: 15px; }
-    .exercise-card { border: 2px solid #e0e0e0; padding: 20px; border-radius: 8px; }
+    .exercise-card { border: 2px solid #e0e0e0; padding: 20px; border-radius: 8px; position: relative; }
     .exercise-card.active { border-color: #2196f3; background: #f3f9ff; }
+    .exercise-card.completed { border-color: #4caf50; background: #f1f8e9; opacity: 0.8; }
+    .completed-badge { background: #4caf50; color: white; padding: 4px 8px; border-radius: 4px; font-size: 12px; }
     .exercise-details { display: grid; grid-template-columns: repeat(auto-fit, minmax(120px, 1fr)); gap: 10px; margin: 10px 0; }
-    .complete-btn, .start-btn, .finish-btn { padding: 10px 20px; border: none; border-radius: 6px; cursor: pointer; font-size: 16px; }
+    .complete-btn, .start-btn, .finish-btn, .next-btn { padding: 10px 20px; border: none; border-radius: 6px; cursor: pointer; font-size: 16px; margin: 5px; }
     .start-btn { background: #4caf50; color: white; }
     .complete-btn { background: #2196f3; color: white; }
     .finish-btn { background: #ff9800; color: white; }
+    .next-btn { background: #9c27b0; color: white; }
+    .completion-section { display: flex; gap: 10px; flex-wrap: wrap; }
     .timer { text-align: center; background: #ffeb3b; padding: 15px; border-radius: 8px; margin-top: 20px; }
+    .loading { text-align: center; padding: 40px; color: #666; }
   `]
 })
 export class WorkoutComponent implements OnInit {
@@ -70,6 +83,7 @@ export class WorkoutComponent implements OnInit {
   workoutStarted = false;
   currentExercise = 0;
   restTimer = 0;
+  nextWorkout: WorkoutPlan | null = null;
 
   constructor(private workoutService: WorkoutService) {}
 
@@ -77,9 +91,24 @@ export class WorkoutComponent implements OnInit {
     const today = new Date().getDay();
     const days: (keyof WeeklyPlan)[] = 
       ['sunday', 'monday', 'tuesday', 'wednesday', 'thursday', 'friday', 'saturday'];
-    
     const dayKey = days[today];
+    
+    // Always load from local data first for immediate display
     this.currentWorkout = this.workoutService.getDayWorkout(dayKey);
+    this.setNextWorkout(today);
+    
+    // Try to get workout from API for any updates
+    const dayIds = ['sunday', 'monday', 'tuesday', 'wednesday', 'thursday', 'friday', 'saturday'];
+    const currentDayId = dayIds[today];
+    
+    this.workoutService.getWorkoutById(currentDayId).subscribe({
+      next: (workout) => {
+        this.currentWorkout = workout;
+      },
+      error: () => {
+        // Keep the local data that's already loaded
+      }
+    });
   }
 
   startWorkout() {
@@ -103,8 +132,50 @@ export class WorkoutComponent implements OnInit {
   }
 
   finishWorkout() {
-    alert('Workout completed! Great job!');
+    if (this.currentWorkout) {
+      this.workoutService.completeWorkout(this.currentWorkout.id).subscribe({
+        next: () => {
+          alert('Workout completed and saved! Great job!');
+        },
+        error: () => {
+          alert('Workout completed! Great job!');
+        }
+      });
+    }
     this.workoutStarted = false;
     this.currentExercise = 0;
+  }
+
+  goToNextWorkout() {
+    if (this.nextWorkout) {
+      this.currentWorkout = this.nextWorkout;
+      this.workoutStarted = false;
+      this.currentExercise = 0;
+      this.restTimer = 0;
+      
+      const today = new Date().getDay();
+      this.setNextWorkout(today + 1);
+    }
+  }
+
+  private setNextWorkout(dayIndex: number) {
+    const days: (keyof WeeklyPlan)[] = 
+      ['sunday', 'monday', 'tuesday', 'wednesday', 'thursday', 'friday', 'saturday'];
+    
+    const nextDayIndex = (dayIndex + 1) % 7;
+    const nextDayKey = days[nextDayIndex];
+    
+    try {
+      this.workoutService.getWorkoutById(nextDayKey).subscribe({
+        next: (workout) => {
+          this.nextWorkout = workout;
+        },
+        error: () => {
+          this.nextWorkout = this.workoutService.getDayWorkout(nextDayKey);
+        }
+      });
+    } catch {
+      this.nextWorkout = this.workoutService.getDayWorkout(nextDayKey);
+    }
   }
 }

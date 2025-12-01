@@ -1,10 +1,16 @@
 import { Injectable } from '@angular/core';
+import { HttpClient } from '@angular/common/http';
+import { Observable } from 'rxjs';
 import { WorkoutPlan, WeeklyPlan } from '../models/workout.model';
 
 @Injectable({
   providedIn: 'root'
 })
 export class WorkoutService {
+  private apiUrl = 'http://localhost:3000';
+
+  constructor(private http: HttpClient) {}
+
   private weeklyPlan: WeeklyPlan = {
     monday: {
       id: 'mon',
@@ -112,5 +118,21 @@ export class WorkoutService {
 
   getDayWorkout(day: keyof WeeklyPlan): WorkoutPlan {
     return this.weeklyPlan[day];
+  }
+
+  getWorkouts(): Observable<WorkoutPlan[]> {
+    return this.http.get<WorkoutPlan[]>(`${this.apiUrl}/workouts`);
+  }
+
+  getWorkoutById(id: string): Observable<WorkoutPlan> {
+    return this.http.get<WorkoutPlan>(`${this.apiUrl}/workouts/${id}`);
+  }
+
+  completeWorkout(workoutId: string): Observable<any> {
+    return this.http.patch(`${this.apiUrl}/progress`, {
+      completedWorkouts: 5,
+      lastCompletedWorkout: workoutId,
+      completedDate: new Date().toISOString()
+    });
   }
 }
