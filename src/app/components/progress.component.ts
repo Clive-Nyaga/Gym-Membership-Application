@@ -125,13 +125,20 @@ export class ProgressComponent implements OnInit {
   }
 
   updateWeeklyProgress() {
-    const completedCount = this.weekDays.filter(day => day.completed).length;
+    const today = new Date().getDay();
+    const completedCount = this.weekDays.filter((day, index) => {
+      const dayNumber = index === 6 ? 0 : index + 1; // Adjust for Sunday being last in array but 0 in getDay()
+      return dayNumber < today;
+    }).length;
+    
     this.completedWorkouts = completedCount;
+    this.totalWorkouts = completedCount; // Reset total to current week only
+    this.streak = completedCount; // Reset streak to current week
     this.weeklyProgress = (completedCount / 7) * 100;
   }
-  completedWorkouts = 4;
-  totalWorkouts = 12;
-  streak = 4;
+  completedWorkouts = 0;
+  totalWorkouts = 0;
+  streak = 0;
   
   weeklyProgress = (this.completedWorkouts / 7) * 100;
   
@@ -147,7 +154,7 @@ export class ProgressComponent implements OnInit {
 
   isDayCompleted(dayOfWeek: number): boolean {
     const today = new Date().getDay();
-    // Mark days as completed if they are before today in the current week
+    // Only mark days as completed if they are before today in the current week
     return dayOfWeek < today;
   }
 }

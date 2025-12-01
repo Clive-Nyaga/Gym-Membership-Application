@@ -14,7 +14,7 @@ import { WeeklyPlan } from '../models/workout.model';
       <div class="stats">
         <div class="stat-card">
           <h3>This Week's Progress</h3>
-          <p>4/6 workouts completed</p>
+          <p>{{ getCompletedCount() }}/7 workouts completed</p>
         </div>
         <div class="stat-card">
           <h3>Today's Workout</h3>
@@ -125,7 +125,7 @@ import { WeeklyPlan } from '../models/workout.model';
 })
 export class DashboardComponent implements OnInit {
   weeklyPlan!: WeeklyPlan;
-  completedDays = ['monday', 'tuesday', 'wednesday', 'thursday'];
+  completedDays: string[] = [];
 
   constructor(private workoutService: WorkoutService) {}
 
@@ -138,7 +138,17 @@ export class DashboardComponent implements OnInit {
   }
 
   isCompleted(day: string): boolean {
-    return this.completedDays.includes(day);
+    const today = new Date().getDay();
+    const dayMap: { [key: string]: number } = {
+      'sunday': 0, 'monday': 1, 'tuesday': 2, 'wednesday': 3, 
+      'thursday': 4, 'friday': 5, 'saturday': 6
+    };
+    const dayNumber = dayMap[day];
+    return dayNumber < today;
+  }
+
+  getCompletedCount(): number {
+    return this.getDays().filter(day => this.isCompleted(day)).length;
   }
 
   getTodaysWorkout(): string {
