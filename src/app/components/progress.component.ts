@@ -15,7 +15,7 @@ import { CommonModule } from '@angular/common';
           <div class="progress-bar">
             <div class="progress-fill" [style.width.%]="weeklyProgress"></div>
           </div>
-          <p>{{ completedWorkouts }}/6 workouts completed</p>
+          <p>{{ completedWorkouts }}/7 workouts completed</p>
         </div>
         
         <div class="progress-card">
@@ -35,6 +35,7 @@ import { CommonModule } from '@angular/common';
           <div *ngFor="let day of weekDays" class="calendar-day" [class.completed]="day.completed">
             <div class="day-name">{{ day.name }}</div>
             <div class="day-workout">{{ day.workout }}</div>
+            <div class="day-time">{{ day.time }}</div>
             <div class="day-status">{{ day.completed ? '✅' : '⏳' }}</div>
           </div>
         </div>
@@ -61,7 +62,7 @@ import { CommonModule } from '@angular/common';
             <div class="description">Complete 10 workouts</div>
           </div>
           
-          <div class="achievement" [class.unlocked]="completedWorkouts >= 6">
+          <div class="achievement" [class.unlocked]="completedWorkouts >= 7">
             <div class="badge">🏆</div>
             <div class="title">Week Champion</div>
             <div class="description">Complete all weekly workouts</div>
@@ -104,7 +105,8 @@ import { CommonModule } from '@angular/common';
     .calendar-day { background: white; border: 2px solid #e0e0e0; padding: 15px; border-radius: 8px; text-align: center; }
     .calendar-day.completed { border-color: #4caf50; background: #f1f8e9; }
     .day-name { font-weight: bold; margin-bottom: 5px; }
-    .day-workout { font-size: 12px; color: #666; margin-bottom: 10px; }
+    .day-workout { font-size: 12px; color: #666; margin-bottom: 5px; }
+    .day-time { font-size: 10px; color: #999; font-style: italic; margin-bottom: 10px; }
     .day-status { font-size: 1.5em; }
     .achievement-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 20px; margin-top: 20px; }
     .achievement { background: #f5f5f5; padding: 20px; border-radius: 8px; text-align: center; opacity: 0.5; }
@@ -121,14 +123,15 @@ export class ProgressComponent {
   totalWorkouts = 12;
   streak = 4;
   
-  weeklyProgress = (this.completedWorkouts / 6) * 100;
+  weeklyProgress = (this.completedWorkouts / 7) * 100;
   
   weekDays = [
-    { name: 'Mon', workout: 'Upper Push', completed: true },
-    { name: 'Tue', workout: 'Lower Body', completed: true },
-    { name: 'Wed', workout: 'Upper Pull', completed: true },
-    { name: 'Thu', workout: 'Core & Cardio', completed: true },
-    { name: 'Fri', workout: 'Full Body', completed: false },
-    { name: 'Sat', workout: 'Recovery', completed: false }
+    { name: 'Mon', workout: 'Upper Push', time: '6:00 AM or 7:00 PM', completed: true },
+    { name: 'Tue', workout: 'Lower Body', time: '6:00 AM or 7:00 PM', completed: true },
+    { name: 'Wed', workout: 'Upper Pull', time: '6:00 AM or 7:00 PM', completed: true },
+    { name: 'Thu', workout: 'Core & Cardio', time: '6:00 AM or 7:00 PM', completed: true },
+    { name: 'Fri', workout: 'Full Body', time: '6:00 AM or 7:00 PM', completed: false },
+    { name: 'Sat', workout: 'HIIT Training', time: '8:00 AM or 6:00 PM', completed: false },
+    { name: 'Sun', workout: 'Recovery Day', time: 'Anytime', completed: false }
   ];
 }
