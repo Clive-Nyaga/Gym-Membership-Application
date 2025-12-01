@@ -611,50 +611,60 @@
   "progress": {
     "item": {
       "item": {
-        "completedWorkouts": 4,
-        "totalWorkouts": 12,
-        "streak": 4,
-        "weeklyGoal": 6,
-        "completedDays": [
-          "monday",
-          "tuesday",
-          "wednesday",
-          "thursday"
-        ],
-        "achievements": [
-          {
-            "id": "first_workout",
-            "name": "First Workout",
-            "description": "Complete your first workout",
-            "unlocked": true
+        "item": {
+          "item": {
+            "completedWorkouts": 4,
+            "totalWorkouts": 12,
+            "streak": 4,
+            "weeklyGoal": 6,
+            "completedDays": [
+              "monday",
+              "tuesday",
+              "wednesday",
+              "thursday"
+            ],
+            "achievements": [
+              {
+                "id": "first_workout",
+                "name": "First Workout",
+                "description": "Complete your first workout",
+                "unlocked": true
+              },
+              {
+                "id": "three_day_streak",
+                "name": "3-Day Streak",
+                "description": "Workout 3 days in a row",
+                "unlocked": true
+              },
+              {
+                "id": "dedicated",
+                "name": "Dedicated",
+                "description": "Complete 10 workouts",
+                "unlocked": false
+              },
+              {
+                "id": "week_champion",
+                "name": "Week Champion",
+                "description": "Complete all weekly workouts",
+                "unlocked": false
+              }
+            ]
           },
-          {
-            "id": "three_day_streak",
-            "name": "3-Day Streak",
-            "description": "Workout 3 days in a row",
-            "unlocked": true
-          },
-          {
-            "id": "dedicated",
-            "name": "Dedicated",
-            "description": "Complete 10 workouts",
-            "unlocked": false
-          },
-          {
-            "id": "week_champion",
-            "name": "Week Champion",
-            "description": "Complete all weekly workouts",
-            "unlocked": false
-          }
-        ]
+          "completedWorkouts": 5,
+          "lastCompletedWorkout": "monday",
+          "completedDate": "2025-12-01T00:37:15.534Z"
+        },
+        "completedWorkouts": 5,
+        "lastCompletedWorkout": "monday",
+        "completedDate": "2025-12-01T00:37:56.355Z"
       },
       "completedWorkouts": 5,
       "lastCompletedWorkout": "monday",
-      "completedDate": "2025-12-01T00:37:15.534Z"
+      "completedDate": "2025-12-01T13:00:17.995Z"
     },
     "completedWorkouts": 5,
     "lastCompletedWorkout": "monday",
-    "completedDate": "2025-12-01T00:37:56.355Z"
+    "completedDate": "2025-12-01T13:01:47.484Z"
   },
   "user": {
     "id": 1,

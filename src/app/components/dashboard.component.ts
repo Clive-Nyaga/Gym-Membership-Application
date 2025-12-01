@@ -17,8 +17,8 @@ import { WeeklyPlan } from '../models/workout.model';
           <p>4/6 workouts completed</p>
         </div>
         <div class="stat-card">
-          <h3>Next Workout</h3>
-          <p>{{ getNextWorkout() }}</p>
+          <h3>Today's Workout</h3>
+          <p>{{ getTodaysWorkout() }}</p>
         </div>
       </div>
       
@@ -141,14 +141,25 @@ export class DashboardComponent implements OnInit {
     return this.completedDays.includes(day);
   }
 
-  getNextWorkout(): string {
+  getTodaysWorkout(): string {
     const today = new Date().getDay();
     const days = ['sunday', 'monday', 'tuesday', 'wednesday', 'thursday', 'friday', 'saturday'];
     const currentDay = days[today];
     
-    if (currentDay === 'sunday') return 'Monday - Upper Body Push';
     if (currentDay in this.weeklyPlan) {
       return this.weeklyPlan[currentDay as keyof WeeklyPlan]?.name || 'Rest Day';
+    }
+    return 'Rest Day';
+  }
+
+  getNextWorkout(): string {
+    const today = new Date().getDay();
+    const days = ['sunday', 'monday', 'tuesday', 'wednesday', 'thursday', 'friday', 'saturday'];
+    const nextDayIndex = (today + 1) % 7;
+    const nextDay = days[nextDayIndex];
+    
+    if (nextDay in this.weeklyPlan) {
+      return `${this.weeklyPlan[nextDay as keyof WeeklyPlan]?.name || 'Rest Day'}`;
     }
     return 'Rest Day';
   }

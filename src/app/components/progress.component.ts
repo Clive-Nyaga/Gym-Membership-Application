@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { CommonModule } from '@angular/common';
 
 @Component({
@@ -118,7 +118,17 @@ import { CommonModule } from '@angular/common';
     .tip-card { background: #f9f9f9; padding: 20px; border-radius: 8px; }
   `]
 })
-export class ProgressComponent {
+export class ProgressComponent implements OnInit {
+
+  ngOnInit() {
+    this.updateWeeklyProgress();
+  }
+
+  updateWeeklyProgress() {
+    const completedCount = this.weekDays.filter(day => day.completed).length;
+    this.completedWorkouts = completedCount;
+    this.weeklyProgress = (completedCount / 7) * 100;
+  }
   completedWorkouts = 4;
   totalWorkouts = 12;
   streak = 4;
@@ -126,12 +136,18 @@ export class ProgressComponent {
   weeklyProgress = (this.completedWorkouts / 7) * 100;
   
   weekDays = [
-    { name: 'Mon', workout: 'Upper Push', time: '6:00 AM or 7:00 PM', completed: true },
-    { name: 'Tue', workout: 'Lower Body', time: '6:00 AM or 7:00 PM', completed: true },
-    { name: 'Wed', workout: 'Upper Pull', time: '6:00 AM or 7:00 PM', completed: true },
-    { name: 'Thu', workout: 'Core & Cardio', time: '6:00 AM or 7:00 PM', completed: true },
-    { name: 'Fri', workout: 'Full Body', time: '6:00 AM or 7:00 PM', completed: false },
-    { name: 'Sat', workout: 'HIIT Training', time: '8:00 AM or 6:00 PM', completed: false },
-    { name: 'Sun', workout: 'Recovery Day', time: 'Anytime', completed: false }
+    { name: 'Mon', workout: 'Upper Push', time: '6:00 AM or 7:00 PM', completed: this.isDayCompleted(1) },
+    { name: 'Tue', workout: 'Lower Body', time: '6:00 AM or 7:00 PM', completed: this.isDayCompleted(2) },
+    { name: 'Wed', workout: 'Upper Pull', time: '6:00 AM or 7:00 PM', completed: this.isDayCompleted(3) },
+    { name: 'Thu', workout: 'Core & Cardio', time: '6:00 AM or 7:00 PM', completed: this.isDayCompleted(4) },
+    { name: 'Fri', workout: 'Full Body', time: '6:00 AM or 7:00 PM', completed: this.isDayCompleted(5) },
+    { name: 'Sat', workout: 'HIIT Training', time: '8:00 AM or 6:00 PM', completed: this.isDayCompleted(6) },
+    { name: 'Sun', workout: 'Recovery Day', time: 'Anytime', completed: this.isDayCompleted(0) }
   ];
+
+  isDayCompleted(dayOfWeek: number): boolean {
+    const today = new Date().getDay();
+    // Mark days as completed if they are before today in the current week
+    return dayOfWeek < today;
+  }
 }
