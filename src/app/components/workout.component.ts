@@ -52,9 +52,7 @@ import { WorkoutPlan, WeeklyPlan } from '../models/workout.model';
         <p>Loading today's workout...</p>
       </div>
 
-      <div class="timer" *ngIf="restTimer > 0">
-        <h3>Rest Time: {{ restTimer }}s</h3>
-      </div>
+
     </div>
   `,
   styles: [`
@@ -74,7 +72,6 @@ import { WorkoutPlan, WeeklyPlan } from '../models/workout.model';
     .finish-btn { background: #ff9800; color: white; }
     .next-btn { background: #9c27b0; color: white; }
     .completion-section { display: flex; gap: 10px; flex-wrap: wrap; }
-    .timer { text-align: center; background: #ffeb3b; padding: 15px; border-radius: 8px; margin-top: 20px; }
     .loading { text-align: center; padding: 40px; color: #666; }
   `]
 })
@@ -82,7 +79,6 @@ export class WorkoutComponent implements OnInit {
   currentWorkout: WorkoutPlan | null = null;
   workoutStarted = false;
   currentExercise = 0;
-  restTimer = 0;
   nextWorkout: WorkoutPlan | null = null;
 
   constructor(private workoutService: WorkoutService) {}
@@ -117,18 +113,9 @@ export class WorkoutComponent implements OnInit {
   }
 
   completeExercise() {
-    if (!this.currentWorkout) return;
+    if (!this.currentWorkout || !this.currentWorkout.exercises) return;
     
-    const exercise = this.currentWorkout.exercises[this.currentExercise];
-    this.restTimer = exercise.restTime;
-    
-    const timer = setInterval(() => {
-      this.restTimer--;
-      if (this.restTimer <= 0) {
-        clearInterval(timer);
-        this.currentExercise++;
-      }
-    }, 1000);
+    this.currentExercise++;
   }
 
   finishWorkout() {
@@ -151,10 +138,11 @@ export class WorkoutComponent implements OnInit {
       this.currentWorkout = this.nextWorkout;
       this.workoutStarted = false;
       this.currentExercise = 0;
-      this.restTimer = 0;
+
       
-      const today = new Date().getDay();
-      this.setNextWorkout(today + 1);
+      // Set the next workout after this one
+      const currentDay = new Date().getDay();
+      this.setNextWorkout(currentDay + 1);
     }
   }
 
@@ -165,17 +153,17 @@ export class WorkoutComponent implements OnInit {
     const nextDayIndex = (dayIndex + 1) % 7;
     const nextDayKey = days[nextDayIndex];
     
-    try {
-      this.workoutService.getWorkoutById(nextDayKey).subscribe({
-        next: (workout) => {
-          this.nextWorkout = workout;
-        },
-        error: () => {
-          this.nextWorkout = this.workoutService.getDayWorkout(nextDayKey);
-        }
-      });
-    } catch {
-      this.nextWorkout = this.workoutService.getDayWorkout(nextDayKey);
-    }
+    // Always set next workout from local data first
+    this.nextWorkout = this.workoutService.getDayWorkout(nextDayKey);
+    
+    // Try to update from API if available
+    this.workoutService.getWorkoutById(nextDayKey).subscribe({
+      next: (workout) => {
+        this.nextWorkout = workout;
+      },
+      error: () => {
+        // Keep the local data already set
+      }
+    });
   }
 }

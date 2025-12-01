@@ -6,12 +6,42 @@
       "name": "Upper Body Push",
       "duration": 45,
       "difficulty": "Intermediate",
-      "targetMuscles": ["Chest", "Shoulders", "Triceps"],
+      "targetMuscles": [
+        "Chest",
+        "Shoulders",
+        "Triceps"
+      ],
       "time": "6:00 AM or 7:00 PM",
       "exercises": [
-        { "name": "Push-ups", "sets": 3, "reps": "12-15", "restTime": 60, "muscleGroups": ["Chest", "Triceps"] },
-        { "name": "Overhead Press", "sets": 3, "reps": "8-10", "restTime": 90, "muscleGroups": ["Shoulders"] },
-        { "name": "Dips", "sets": 3, "reps": "10-12", "restTime": 60, "muscleGroups": ["Triceps", "Chest"] }
+        {
+          "name": "Push-ups",
+          "sets": 3,
+          "reps": "12-15",
+          "restTime": 60,
+          "muscleGroups": [
+            "Chest",
+            "Triceps"
+          ]
+        },
+        {
+          "name": "Overhead Press",
+          "sets": 3,
+          "reps": "8-10",
+          "restTime": 90,
+          "muscleGroups": [
+            "Shoulders"
+          ]
+        },
+        {
+          "name": "Dips",
+          "sets": 3,
+          "reps": "10-12",
+          "restTime": 60,
+          "muscleGroups": [
+            "Triceps",
+            "Chest"
+          ]
+        }
       ]
     },
     {
@@ -20,12 +50,42 @@
       "name": "Lower Body",
       "duration": 50,
       "difficulty": "Intermediate",
-      "targetMuscles": ["Quadriceps", "Hamstrings", "Glutes"],
+      "targetMuscles": [
+        "Quadriceps",
+        "Hamstrings",
+        "Glutes"
+      ],
       "time": "6:00 AM or 7:00 PM",
       "exercises": [
-        { "name": "Squats", "sets": 4, "reps": "12-15", "restTime": 90, "muscleGroups": ["Quadriceps", "Glutes"] },
-        { "name": "Lunges", "sets": 3, "reps": "10 each leg", "restTime": 60, "muscleGroups": ["Quadriceps", "Glutes"] },
-        { "name": "Calf Raises", "sets": 3, "reps": "15-20", "restTime": 45, "muscleGroups": ["Calves"] }
+        {
+          "name": "Squats",
+          "sets": 4,
+          "reps": "12-15",
+          "restTime": 90,
+          "muscleGroups": [
+            "Quadriceps",
+            "Glutes"
+          ]
+        },
+        {
+          "name": "Lunges",
+          "sets": 3,
+          "reps": "10 each leg",
+          "restTime": 60,
+          "muscleGroups": [
+            "Quadriceps",
+            "Glutes"
+          ]
+        },
+        {
+          "name": "Calf Raises",
+          "sets": 3,
+          "reps": "15-20",
+          "restTime": 45,
+          "muscleGroups": [
+            "Calves"
+          ]
+        }
       ]
     },
     {
@@ -34,12 +94,40 @@
       "name": "Upper Body Pull",
       "duration": 45,
       "difficulty": "Intermediate",
-      "targetMuscles": ["Back", "Biceps"],
+      "targetMuscles": [
+        "Back",
+        "Biceps"
+      ],
       "time": "6:00 AM or 7:00 PM",
       "exercises": [
-        { "name": "Pull-ups", "sets": 3, "reps": "6-10", "restTime": 90, "muscleGroups": ["Back", "Biceps"] },
-        { "name": "Rows", "sets": 3, "reps": "10-12", "restTime": 75, "muscleGroups": ["Back"] },
-        { "name": "Bicep Curls", "sets": 3, "reps": "12-15", "restTime": 60, "muscleGroups": ["Biceps"] }
+        {
+          "name": "Pull-ups",
+          "sets": 3,
+          "reps": "6-10",
+          "restTime": 90,
+          "muscleGroups": [
+            "Back",
+            "Biceps"
+          ]
+        },
+        {
+          "name": "Rows",
+          "sets": 3,
+          "reps": "10-12",
+          "restTime": 75,
+          "muscleGroups": [
+            "Back"
+          ]
+        },
+        {
+          "name": "Bicep Curls",
+          "sets": 3,
+          "reps": "12-15",
+          "restTime": 60,
+          "muscleGroups": [
+            "Biceps"
+          ]
+        }
       ]
     },
     {
@@ -48,12 +136,40 @@
       "name": "Core & Cardio",
       "duration": 35,
       "difficulty": "Beginner",
-      "targetMuscles": ["Core", "Cardiovascular"],
+      "targetMuscles": [
+        "Core",
+        "Cardiovascular"
+      ],
       "time": "6:00 AM or 7:00 PM",
       "exercises": [
-        { "name": "Plank", "sets": 3, "reps": "30-60 sec", "restTime": 60, "muscleGroups": ["Core"] },
-        { "name": "Mountain Climbers", "sets": 3, "reps": "20", "restTime": 45, "muscleGroups": ["Core", "Cardio"] },
-        { "name": "Burpees", "sets": 3, "reps": "8-12", "restTime": 90, "muscleGroups": ["Full Body"] }
+        {
+          "name": "Plank",
+          "sets": 3,
+          "reps": "30-60 sec",
+          "restTime": 60,
+          "muscleGroups": [
+            "Core"
+          ]
+        },
+        {
+          "name": "Mountain Climbers",
+          "sets": 3,
+          "reps": "20",
+          "restTime": 45,
+          "muscleGroups": [
+            "Core",
+            "Cardio"
+          ]
+        },
+        {
+          "name": "Burpees",
+          "sets": 3,
+          "reps": "8-12",
+          "restTime": 90,
+          "muscleGroups": [
+            "Full Body"
+          ]
+        }
       ]
     },
     {
@@ -62,12 +178,41 @@
       "name": "Full Body Circuit",
       "duration": 40,
       "difficulty": "Intermediate",
-      "targetMuscles": ["Full Body"],
+      "targetMuscles": [
+        "Full Body"
+      ],
       "time": "6:00 AM or 7:00 PM",
       "exercises": [
-        { "name": "Deadlifts", "sets": 3, "reps": "8-10", "restTime": 120, "muscleGroups": ["Back", "Hamstrings"] },
-        { "name": "Push-ups", "sets": 2, "reps": "10-15", "restTime": 60, "muscleGroups": ["Chest", "Triceps"] },
-        { "name": "Jump Squats", "sets": 3, "reps": "12", "restTime": 75, "muscleGroups": ["Legs", "Cardio"] }
+        {
+          "name": "Deadlifts",
+          "sets": 3,
+          "reps": "8-10",
+          "restTime": 120,
+          "muscleGroups": [
+            "Back",
+            "Hamstrings"
+          ]
+        },
+        {
+          "name": "Push-ups",
+          "sets": 2,
+          "reps": "10-15",
+          "restTime": 60,
+          "muscleGroups": [
+            "Chest",
+            "Triceps"
+          ]
+        },
+        {
+          "name": "Jump Squats",
+          "sets": 3,
+          "reps": "12",
+          "restTime": 75,
+          "muscleGroups": [
+            "Legs",
+            "Cardio"
+          ]
+        }
       ]
     },
     {
@@ -76,12 +221,39 @@
       "name": "HIIT Training",
       "duration": 30,
       "difficulty": "Intermediate",
-      "targetMuscles": ["Full Body", "Cardio"],
+      "targetMuscles": [
+        "Full Body",
+        "Cardio"
+      ],
       "time": "8:00 AM or 6:00 PM",
       "exercises": [
-        { "name": "Jumping Jacks", "sets": 4, "reps": "30 sec", "restTime": 30, "muscleGroups": ["Full Body"] },
-        { "name": "High Knees", "sets": 4, "reps": "30 sec", "restTime": 30, "muscleGroups": ["Cardio"] },
-        { "name": "Push-up Burpees", "sets": 3, "reps": "10", "restTime": 60, "muscleGroups": ["Full Body"] }
+        {
+          "name": "Jumping Jacks",
+          "sets": 4,
+          "reps": "30 sec",
+          "restTime": 30,
+          "muscleGroups": [
+            "Full Body"
+          ]
+        },
+        {
+          "name": "High Knees",
+          "sets": 4,
+          "reps": "30 sec",
+          "restTime": 30,
+          "muscleGroups": [
+            "Cardio"
+          ]
+        },
+        {
+          "name": "Push-up Burpees",
+          "sets": 3,
+          "reps": "10",
+          "restTime": 60,
+          "muscleGroups": [
+            "Full Body"
+          ]
+        }
       ]
     },
     {
@@ -90,92 +262,399 @@
       "name": "Recovery Day",
       "duration": 45,
       "difficulty": "Beginner",
-      "targetMuscles": ["Recovery", "Flexibility"],
+      "targetMuscles": [
+        "Recovery",
+        "Flexibility"
+      ],
       "time": "Anytime",
       "exercises": [
-        { "name": "Gentle Stretching", "sets": 1, "reps": "20 min", "restTime": 0, "muscleGroups": ["Full Body"] },
-        { "name": "Meditation", "sets": 1, "reps": "10 min", "restTime": 0, "muscleGroups": ["Mental Health"] },
-        { "name": "Light Walking", "sets": 1, "reps": "15 min", "restTime": 0, "muscleGroups": ["Recovery"] }
+        {
+          "name": "Gentle Stretching",
+          "sets": 1,
+          "reps": "20 min",
+          "restTime": 0,
+          "muscleGroups": [
+            "Full Body"
+          ]
+        },
+        {
+          "name": "Meditation",
+          "sets": 1,
+          "reps": "10 min",
+          "restTime": 0,
+          "muscleGroups": [
+            "Mental Health"
+          ]
+        },
+        {
+          "name": "Light Walking",
+          "sets": 1,
+          "reps": "15 min",
+          "restTime": 0,
+          "muscleGroups": [
+            "Recovery"
+          ]
+        }
       ]
     }
   ],
   "meals": [
     {
       "day": "Monday",
-      "breakfast": { "name": "Ugali & Sukuma Wiki", "calories": 320, "protein": 8, "carbs": 65, "fats": 3, "prepTime": 15, "cost": 80 },
-      "lunch": { "name": "Rice & Beans with Chicken", "calories": 480, "protein": 28, "carbs": 58, "fats": 12, "prepTime": 20, "cost": 150 },
-      "dinner": { "name": "Chapati & Beef Stew", "calories": 520, "protein": 32, "carbs": 45, "fats": 18, "prepTime": 30, "cost": 200 },
-      "snacks": [{ "name": "Groundnuts & Banana", "calories": 180, "protein": 6, "carbs": 25, "fats": 8, "prepTime": 2, "cost": 50 }],
+      "breakfast": {
+        "name": "Ugali & Sukuma Wiki",
+        "calories": 320,
+        "protein": 8,
+        "carbs": 65,
+        "fats": 3,
+        "prepTime": 15,
+        "cost": 80
+      },
+      "lunch": {
+        "name": "Rice & Beans with Chicken",
+        "calories": 480,
+        "protein": 28,
+        "carbs": 58,
+        "fats": 12,
+        "prepTime": 20,
+        "cost": 150
+      },
+      "dinner": {
+        "name": "Chapati & Beef Stew",
+        "calories": 520,
+        "protein": 32,
+        "carbs": 45,
+        "fats": 18,
+        "prepTime": 30,
+        "cost": 200
+      },
+      "snacks": [
+        {
+          "name": "Groundnuts & Banana",
+          "calories": 180,
+          "protein": 6,
+          "carbs": 25,
+          "fats": 8,
+          "prepTime": 2,
+          "cost": 50
+        }
+      ],
       "totalCalories": 1500,
-      "totalCost": 480
+      "totalCost": 480,
+      "id": "7553"
     },
     {
       "day": "Tuesday",
-      "breakfast": { "name": "Mandazi & Tea", "calories": 300, "protein": 6, "carbs": 55, "fats": 8, "prepTime": 10, "cost": 60 },
-      "lunch": { "name": "Githeri with Vegetables", "calories": 420, "protein": 18, "carbs": 68, "fats": 8, "prepTime": 25, "cost": 120 },
-      "dinner": { "name": "Tilapia & Sweet Potato", "calories": 450, "protein": 35, "carbs": 40, "fats": 15, "prepTime": 25, "cost": 250 },
-      "snacks": [{ "name": "Boiled Eggs & Avocado", "calories": 220, "protein": 12, "carbs": 8, "fats": 18, "prepTime": 5, "cost": 80 }],
+      "breakfast": {
+        "name": "Mandazi & Tea",
+        "calories": 300,
+        "protein": 6,
+        "carbs": 55,
+        "fats": 8,
+        "prepTime": 10,
+        "cost": 60
+      },
+      "lunch": {
+        "name": "Githeri with Vegetables",
+        "calories": 420,
+        "protein": 18,
+        "carbs": 68,
+        "fats": 8,
+        "prepTime": 25,
+        "cost": 120
+      },
+      "dinner": {
+        "name": "Tilapia & Sweet Potato",
+        "calories": 450,
+        "protein": 35,
+        "carbs": 40,
+        "fats": 15,
+        "prepTime": 25,
+        "cost": 250
+      },
+      "snacks": [
+        {
+          "name": "Boiled Eggs & Avocado",
+          "calories": 220,
+          "protein": 12,
+          "carbs": 8,
+          "fats": 18,
+          "prepTime": 5,
+          "cost": 80
+        }
+      ],
       "totalCalories": 1390,
-      "totalCost": 510
+      "totalCost": 510,
+      "id": "00f0"
     },
     {
       "day": "Wednesday",
-      "breakfast": { "name": "Porridge & Bread", "calories": 350, "protein": 10, "carbs": 62, "fats": 6, "prepTime": 12, "cost": 70 },
-      "lunch": { "name": "Pilau with Kachumbari", "calories": 460, "protein": 15, "carbs": 72, "fats": 14, "prepTime": 35, "cost": 180 },
-      "dinner": { "name": "Nyama Choma & Ugali", "calories": 550, "protein": 38, "carbs": 35, "fats": 25, "prepTime": 20, "cost": 300 },
-      "snacks": [{ "name": "Passion Fruit & Nuts", "calories": 160, "protein": 4, "carbs": 20, "fats": 9, "prepTime": 3, "cost": 60 }],
+      "breakfast": {
+        "name": "Porridge & Bread",
+        "calories": 350,
+        "protein": 10,
+        "carbs": 62,
+        "fats": 6,
+        "prepTime": 12,
+        "cost": 70
+      },
+      "lunch": {
+        "name": "Pilau with Kachumbari",
+        "calories": 460,
+        "protein": 15,
+        "carbs": 72,
+        "fats": 14,
+        "prepTime": 35,
+        "cost": 180
+      },
+      "dinner": {
+        "name": "Nyama Choma & Ugali",
+        "calories": 550,
+        "protein": 38,
+        "carbs": 35,
+        "fats": 25,
+        "prepTime": 20,
+        "cost": 300
+      },
+      "snacks": [
+        {
+          "name": "Passion Fruit & Nuts",
+          "calories": 160,
+          "protein": 4,
+          "carbs": 20,
+          "fats": 9,
+          "prepTime": 3,
+          "cost": 60
+        }
+      ],
       "totalCalories": 1520,
-      "totalCost": 610
+      "totalCost": 610,
+      "id": "89c9"
     },
     {
       "day": "Thursday",
-      "breakfast": { "name": "Samosa & Chai", "calories": 280, "protein": 8, "carbs": 38, "fats": 12, "prepTime": 8, "cost": 90 },
-      "lunch": { "name": "Mukimo & Chicken Curry", "calories": 500, "protein": 30, "carbs": 55, "fats": 16, "prepTime": 30, "cost": 200 },
-      "dinner": { "name": "Fish & Chips", "calories": 480, "protein": 25, "carbs": 48, "fats": 20, "prepTime": 25, "cost": 220 },
-      "snacks": [{ "name": "Yogurt & Honey", "calories": 150, "protein": 8, "carbs": 22, "fats": 4, "prepTime": 2, "cost": 70 }],
+      "breakfast": {
+        "name": "Samosa & Chai",
+        "calories": 280,
+        "protein": 8,
+        "carbs": 38,
+        "fats": 12,
+        "prepTime": 8,
+        "cost": 90
+      },
+      "lunch": {
+        "name": "Mukimo & Chicken Curry",
+        "calories": 500,
+        "protein": 30,
+        "carbs": 55,
+        "fats": 16,
+        "prepTime": 30,
+        "cost": 200
+      },
+      "dinner": {
+        "name": "Fish & Chips",
+        "calories": 480,
+        "protein": 25,
+        "carbs": 48,
+        "fats": 20,
+        "prepTime": 25,
+        "cost": 220
+      },
+      "snacks": [
+        {
+          "name": "Yogurt & Honey",
+          "calories": 150,
+          "protein": 8,
+          "carbs": 22,
+          "fats": 4,
+          "prepTime": 2,
+          "cost": 70
+        }
+      ],
       "totalCalories": 1410,
-      "totalCost": 580
+      "totalCost": 580,
+      "id": "0903"
     },
     {
       "day": "Friday",
-      "breakfast": { "name": "Pancakes & Milk", "calories": 340, "protein": 12, "carbs": 48, "fats": 10, "prepTime": 15, "cost": 85 },
-      "lunch": { "name": "Matoke & Meat Stew", "calories": 440, "protein": 26, "carbs": 52, "fats": 14, "prepTime": 28, "cost": 170 },
-      "dinner": { "name": "Biryani with Raita", "calories": 520, "protein": 22, "carbs": 68, "fats": 18, "prepTime": 40, "cost": 280 },
-      "snacks": [{ "name": "Roasted Maize", "calories": 180, "protein": 5, "carbs": 35, "fats": 3, "prepTime": 5, "cost": 40 }],
+      "breakfast": {
+        "name": "Pancakes & Milk",
+        "calories": 340,
+        "protein": 12,
+        "carbs": 48,
+        "fats": 10,
+        "prepTime": 15,
+        "cost": 85
+      },
+      "lunch": {
+        "name": "Matoke & Meat Stew",
+        "calories": 440,
+        "protein": 26,
+        "carbs": 52,
+        "fats": 14,
+        "prepTime": 28,
+        "cost": 170
+      },
+      "dinner": {
+        "name": "Biryani with Raita",
+        "calories": 520,
+        "protein": 22,
+        "carbs": 68,
+        "fats": 18,
+        "prepTime": 40,
+        "cost": 280
+      },
+      "snacks": [
+        {
+          "name": "Roasted Maize",
+          "calories": 180,
+          "protein": 5,
+          "carbs": 35,
+          "fats": 3,
+          "prepTime": 5,
+          "cost": 40
+        }
+      ],
       "totalCalories": 1480,
-      "totalCost": 575
+      "totalCost": 575,
+      "id": "a18c"
     },
     {
       "day": "Saturday",
-      "breakfast": { "name": "French Toast & Fruit", "calories": 320, "protein": 9, "carbs": 52, "fats": 8, "prepTime": 12, "cost": 100 },
-      "lunch": { "name": "Wali wa Nazi & Fish", "calories": 470, "protein": 28, "carbs": 58, "fats": 16, "prepTime": 30, "cost": 240 },
-      "dinner": { "name": "Grilled Chicken & Salad", "calories": 420, "protein": 35, "carbs": 15, "fats": 22, "prepTime": 20, "cost": 250 },
-      "snacks": [{ "name": "Mango & Cashews", "calories": 200, "protein": 4, "carbs": 28, "fats": 10, "prepTime": 3, "cost": 80 }],
+      "breakfast": {
+        "name": "French Toast & Fruit",
+        "calories": 320,
+        "protein": 9,
+        "carbs": 52,
+        "fats": 8,
+        "prepTime": 12,
+        "cost": 100
+      },
+      "lunch": {
+        "name": "Wali wa Nazi & Fish",
+        "calories": 470,
+        "protein": 28,
+        "carbs": 58,
+        "fats": 16,
+        "prepTime": 30,
+        "cost": 240
+      },
+      "dinner": {
+        "name": "Grilled Chicken & Salad",
+        "calories": 420,
+        "protein": 35,
+        "carbs": 15,
+        "fats": 22,
+        "prepTime": 20,
+        "cost": 250
+      },
+      "snacks": [
+        {
+          "name": "Mango & Cashews",
+          "calories": 200,
+          "protein": 4,
+          "carbs": 28,
+          "fats": 10,
+          "prepTime": 3,
+          "cost": 80
+        }
+      ],
       "totalCalories": 1410,
-      "totalCost": 670
+      "totalCost": 670,
+      "id": "83e7"
     },
     {
       "day": "Sunday",
-      "breakfast": { "name": "Chapati & Scrambled Eggs", "calories": 380, "protein": 16, "carbs": 42, "fats": 16, "prepTime": 15, "cost": 120 },
-      "lunch": { "name": "Beef Stew & Rice", "calories": 490, "protein": 32, "carbs": 48, "fats": 18, "prepTime": 35, "cost": 220 },
-      "dinner": { "name": "Grilled Tilapia & Vegetables", "calories": 400, "protein": 30, "carbs": 25, "fats": 18, "prepTime": 25, "cost": 280 },
-      "snacks": [{ "name": "Sweet Potato & Milk", "calories": 190, "protein": 6, "carbs": 38, "fats": 2, "prepTime": 10, "cost": 60 }],
+      "breakfast": {
+        "name": "Chapati & Scrambled Eggs",
+        "calories": 380,
+        "protein": 16,
+        "carbs": 42,
+        "fats": 16,
+        "prepTime": 15,
+        "cost": 120
+      },
+      "lunch": {
+        "name": "Beef Stew & Rice",
+        "calories": 490,
+        "protein": 32,
+        "carbs": 48,
+        "fats": 18,
+        "prepTime": 35,
+        "cost": 220
+      },
+      "dinner": {
+        "name": "Grilled Tilapia & Vegetables",
+        "calories": 400,
+        "protein": 30,
+        "carbs": 25,
+        "fats": 18,
+        "prepTime": 25,
+        "cost": 280
+      },
+      "snacks": [
+        {
+          "name": "Sweet Potato & Milk",
+          "calories": 190,
+          "protein": 6,
+          "carbs": 38,
+          "fats": 2,
+          "prepTime": 10,
+          "cost": 60
+        }
+      ],
       "totalCalories": 1460,
-      "totalCost": 680
+      "totalCost": 680,
+      "id": "dd56"
     }
   ],
   "progress": {
-    "completedWorkouts": 4,
-    "totalWorkouts": 12,
-    "streak": 4,
-    "weeklyGoal": 6,
-    "completedDays": ["monday", "tuesday", "wednesday", "thursday"],
-    "achievements": [
-      { "id": "first_workout", "name": "First Workout", "description": "Complete your first workout", "unlocked": true },
-      { "id": "three_day_streak", "name": "3-Day Streak", "description": "Workout 3 days in a row", "unlocked": true },
-      { "id": "dedicated", "name": "Dedicated", "description": "Complete 10 workouts", "unlocked": false },
-      { "id": "week_champion", "name": "Week Champion", "description": "Complete all weekly workouts", "unlocked": false }
-    ]
+    "item": {
+      "item": {
+        "completedWorkouts": 4,
+        "totalWorkouts": 12,
+        "streak": 4,
+        "weeklyGoal": 6,
+        "completedDays": [
+          "monday",
+          "tuesday",
+          "wednesday",
+          "thursday"
+        ],
+        "achievements": [
+          {
+            "id": "first_workout",
+            "name": "First Workout",
+            "description": "Complete your first workout",
+            "unlocked": true
+          },
+          {
+            "id": "three_day_streak",
+            "name": "3-Day Streak",
+            "description": "Workout 3 days in a row",
+            "unlocked": true
+          },
+          {
+            "id": "dedicated",
+            "name": "Dedicated",
+            "description": "Complete 10 workouts",
+            "unlocked": false
+          },
+          {
+            "id": "week_champion",
+            "name": "Week Champion",
+            "description": "Complete all weekly workouts",
+            "unlocked": false
+          }
+        ]
+      },
+      "completedWorkouts": 5,
+      "lastCompletedWorkout": "monday",
+      "completedDate": "2025-12-01T00:37:15.534Z"
+    },
+    "completedWorkouts": 5,
+    "lastCompletedWorkout": "monday",
+    "completedDate": "2025-12-01T00:37:56.355Z"
   },
   "user": {
     "id": 1,
@@ -183,7 +662,11 @@
     "email": "john@example.com",
     "workSchedule": "9-5",
     "fitnessLevel": "Intermediate",
-    "goals": ["Full Body Fitness", "Weight Management", "Strength Building"],
+    "goals": [
+      "Full Body Fitness",
+      "Weight Management",
+      "Strength Building"
+    ],
     "preferences": {
       "workoutTime": "evening",
       "dietType": "balanced",
